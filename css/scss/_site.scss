@@ -239,6 +239,14 @@ table.tablespacer {
     }
 }
 
+.high-low {
+    th { text-align: center; }
+    .high, .low { text-align: center; }
+    .high { color: #a82001; }
+    .low { color: #0101a8; }
+    .time { margin-left: 10px; }
+}
+
 // Custom text colors
 .m-grau { color: #8a8a8a; }
 .m-orange { color: #f7cd35; }

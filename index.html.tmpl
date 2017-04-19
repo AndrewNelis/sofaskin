@@ -114,19 +114,47 @@
                     </table>
                 </div>
 
+#def MinMax($name, $value)
+    <tr>
+        <td>$name</td>
+        <td class="high">$value.max</td>
+        <td class="high time">$value.maxtime</td>
+        <td class="low">$value.min</td>
+        <td class="low time">$value.mintime</td>
+    </tr>
+#end def
+
                 <div class="card" >
                     <h1><i class="fa fa-moon-o m-grau" ></i> Since Midnight</h1>
+                    <table class="tablespacer high-low">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th colspan="2">High</th>
+                                <th colspan="2">Low</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            $MinMax("Temperature",$day.outTemp)
+                            $MinMax("Dewpoint",$day.dewpoint)
+                            $MinMax("Humidity",$day.outHumidity)
+                            $MinMax("Barometer",$day.barometer)
+                            $MinMax("Inside Temperature",$day.inTemp)
+                            #if $day.extraTemp1.has_data
+                                $MinMax("Pond Temp", $day.extraTemp1)
+                            #end if
+                            #if $day.UV.has_data
+                                $MinMax("UV", $day.UV)
+                            #end if
+                            #if $day.ET.has_data and $day.ET.sum.raw >0.0
+                                $MinMax("ET", $day.ET)
+                            #end if
+                            #if $day.radiation.has_data
+                                $MinMax("Radiation", $day.radiation)
+                            #end if
+                        </tbody>
+                    </table>
                     <table class="tablespacer">
-                        <tr><td>High Temperature</td><td>$day.outTemp.max</td><td>$day.outTemp.maxtime</td></tr>
-                        <tr><td>Low Temperature</td><td>$day.outTemp.min</td><td>$day.outTemp.mintime</td></tr>
-                        <tr><td>High Heat Index</td><td>$day.heatindex.max</td><td>$day.heatindex.maxtime</td></tr>
-                        <tr><td>Low Wind Chill</td><td>$day.windchill.min</td><td>$day.windchill.mintime</td></tr>
-                        <tr><td>High Dewpoint</td><td>$day.dewpoint.max</td><td>$day.dewpoint.maxtime</td></tr>
-                        <tr><td>Low Dewpoint</td><td>$day.dewpoint.min</td><td>$day.dewpoint.mintime</td></tr>
-                        <tr><td>High Humidity</td><td>$day.outHumidity.max</td><td>$day.outHumidity.maxtime</td></tr>
-                        <tr><td>Low Humidity</td><td>$day.outHumidity.min</td><td>$day.outHumidity.mintime</td></tr>
-                        <tr><td>High Barometer</td><td>$day.barometer.max</td><td>$day.barometer.maxtime</td></tr>
-                        <tr><td>Low Barometer</td><td>$day.barometer.min</td><td>$day.barometer.mintime</td></tr>
                         <tr><td>Today's Rain</td><td>$day.rain.sum</td><td></td></tr>
                         <tr><td>High Rain Rate</td><td>$day.rainRate.max</td><td>$day.rainRate.maxtime</td></tr>
                         <tr><td>High Wind</td><td>$day.wind.max $day.wind.gustdir</td><td>$day.wind.maxtime</td></tr>
@@ -134,24 +162,8 @@
                         <tr><td>RMS Wind</td><td>$day.wind.rms</td><td></td></tr>
                         <tr><td>Vector Average Speed</td><td>$day.wind.vecavg</td><td></td></tr>
                         <tr><td>Vector Average Direction</td><td>$day.wind.vecdir</td><td></td></tr>
-                        <tr><td>High Inside Temperature</td><td>$day.inTemp.max</td><td>$day.inTemp.maxtime</td></tr>
-                        <tr><td>Low Inside Temperature</td><td>$day.inTemp.min</td><td>$day.inTemp.mintime</td></tr>
-                        #if $day.extraTemp1.has_data
-                        <tr><td>High Pond Temp</td><td>$day.extraTemp1.max</td><td>$day.extraTemp1.maxtime</td></tr>
-                        <tr><td>Low Pond Temp</td><td>$day.extraTemp1.min</td><td>$day.extraTemp1.mintime</td></tr>
-                        #end if
-                        #if $day.UV.has_data
-                        <tr><td>High UV</td><td>$day.UV.max</td><td>$day.UV.maxtime</td></tr>
-                        <tr><td>Low UV</td><td>$day.UV.min</td><td>$day.UV.mintime</td></tr>
-                        #end if
-                        #if $day.ET.has_data and $day.ET.sum.raw >0.0
-                        <tr><td>High ET</td><td>$day.ET.max</td><td>$day.ET.maxtime</td></tr>
-                        <tr><td>Low ET</td><td>$day.ET.min</td><td>$day.ET.mintime</td></tr>
-                        #end if
-                        #if $day.radiation.has_data
-                        <tr><td>High Radiation</td><td>$day.radiation.max</td><td>$day.radiation.maxtime</td></tr>
-                        <tr><td>Low Radiation</td><td>$day.radiation.min</td><td>$day.radiation.mintime</td></tr>
-                        #end if
+                        <tr><td>Low Wind Chill</td><td>$day.windchill.min</td><td>$day.windchill.mintime</td></tr>
+                        <tr><td>High Heat Index</td><td>$day.heatindex.max</td><td>$day.heatindex.maxtime</td></tr>
                     </table>
                 </div>
                 
