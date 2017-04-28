@@ -1,43 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        
-        <title>$station.location Monthly Weather Summary</title>
-        
-        <!-- Open Graph -->
-        <meta property="og:site_name" content="$station.location Monthly Weather Summary" />
-        <meta property="og:description" content="Monthly Weather Summary from $station.location - weather web site powered by weewx" />
-		<meta property="og:type" content="website" /> 
-
-        <!-- Icons -->
-        <link rel="icon" href="favicon.ico" type="image/png">
-		<link rel="apple-touch-icon" href="touch-icon.png"/>
-        
-        <!-- Styles -->
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/main.css">
-        
-        <!-- Skripte -->
-        <script src="js/modernizr-2.6.2.min.js"></script>
-        
-        <script type="text/javascript">
-            function openNoaaFile(date)
-            {
-                var url = "NOAA/NOAA-";
-                url = url + date;
-                url = url + ".txt";
-                if(date !== "Monthly summary" && date !== "Yearly summary") {
-                    window.location=url;
-                }
-            }
-        </script>
-    </head>
+#set $weather_type = "Monthly Weather Summary"
+#include "templates/header.html.tmpl"
     <body>
         <header>
             <div class="container-fix" >
